@@ -15,14 +15,14 @@ public class LangtonsAnt extends ApplicationAdapter {
 	
 	long processTime = System.nanoTime();
 	
-	double nanosecondsBetweenUpdates = 2000000;
+	double nanosecondsBetweenUpdates = 20000000;
 	
 	@Override
 	public void create () {
 		sb = new SpriteBatch();
 		texMan = new TextureManager();
 		grid = new Grid(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), texMan.blackSquare_16, texMan.whiteSquare_16);
-		ant = new Ant(texMan.ant, new Vector2((Gdx.graphics.getWidth()/2) - texMan.ant.getWidth(),(Gdx.graphics.getHeight()/2) - texMan.ant.getHeight()), 0);
+		ant = new Ant(texMan.ant_16, new Vector2((Gdx.graphics.getWidth()/2) - texMan.ant_16.getWidth(),(Gdx.graphics.getHeight()/2) - texMan.ant_16.getHeight()), 0);
 	}
 
 	@Override

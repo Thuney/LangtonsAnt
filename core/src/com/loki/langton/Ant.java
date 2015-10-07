@@ -1,6 +1,5 @@
 package com.loki.langton;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -21,7 +20,6 @@ public class Ant {
 	
 		public Ant(Texture tex, Vector2 pos, int rotation)
 		{
-			tex = new Texture(Gdx.files.internal("ant.png"));
 			this.pos = pos;
 			this.rotation = rotation;
 			this.tex = tex;
@@ -81,11 +79,11 @@ public class Ant {
 		{
 			if(rotation > 4)
 			{
-				rotation = 1;
+				rotation = 0;
 			}
 			else if(rotation < -4)
 			{
-				rotation = -1;
+				rotation = 0;
 			}
 			else if(rotation == 0 || rotation == 4 || rotation == -4)
 			{
@@ -108,6 +106,24 @@ public class Ant {
 		public void calcMovement()
 		{
 			calcFacing();
+			
+//			if(pos.y > Gdx.graphics.getHeight())
+//			{
+//				pos.y = 0;
+//			}
+//			else if(pos.y < Gdx.graphics.getHeight())
+//			{
+//				pos.y = Gdx.graphics.getHeight() - tex.getHeight();
+//			}
+//			
+//			if(pos.x > Gdx.graphics.getWidth())
+//			{
+//				pos.y = 0;
+//			}
+//			else if(pos.x < Gdx.graphics.getWidth())
+//			{
+//				pos.y = Gdx.graphics.getWidth() - tex.getWidth();
+//			}
 			
 			if(facing.equals("north"))
 			{
