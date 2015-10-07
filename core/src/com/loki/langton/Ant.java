@@ -1,8 +1,11 @@
 package com.loki.langton;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 
 public class Ant {
@@ -11,14 +14,17 @@ public class Ant {
 		Vector2 pos;
 		Rectangle bounds;
 		String facing;
+		
+		long referenceTime = System.currentTimeMillis();
+		double millisecondsBetweenUpdates = 500;
 		int rotation;
 	
 		public Ant(Texture tex, Vector2 pos, int rotation)
 		{
-			this.tex = tex;
+			tex = new Texture(Gdx.files.internal("ant.png"));
 			this.pos = pos;
-			this.facing = facing;
 			this.rotation = rotation;
+			this.tex = tex;
 			System.out.println(rotation);
 			
 		}
@@ -29,17 +35,46 @@ public class Ant {
 			return bounds;
 		}
 		
+		public void render(SpriteBatch sb)
+		{
+			sb.draw(tex, pos.x, pos.y);
+		}
+		
+		public void update(Array<Square> squares)
+		{
+			if(((System.currentTimeMillis() - referenceTime)) > millisecondsBetweenUpdates)
+			{	
+				for(Square s : squares)
+				{
+					if(getBounds().overlaps(s.getBounds()))
+					{
+						if(s.getColor().equals("white"))
+						{
+							s.changeColor();
+							move("right");
+						}
+						else if(s.getColor().equals("black"))
+						{
+							s.changeColor();
+							move("left");
+						}
+					}
+				}
+				referenceTime = System.currentTimeMillis();
+			}
+		}
+		
 		public void move(String direction)
 		{
-			if(direction == "left")
+			if(direction.equals("left"))
 			{
-				rotation -= 90;
+				rotation -= 1;
 				
 				calcMovement();
 			}
-			else if(direction == "right")
+			else if(direction.equals("right"))
 			{
-				rotation += 90;
+				rotation += 1;
 				
 				calcMovement();
 			}
@@ -47,19 +82,19 @@ public class Ant {
 		
 		public void calcFacing()
 		{
-			if(rotation == 0 || rotation == 360 || rotation == -360)
+			if(rotation == 0 || rotation == 4 || rotation == -4)
 			{
 				facing = "north";
 			}
-			else if(rotation == 90 || rotation == -270)
+			else if(rotation == 1 || rotation == -3)
 			{
 				facing = "east";
 			}
-			else if(rotation == 180 || rotation == -180)
+			else if(Math.abs(rotation) == 2)
 			{
 				facing = "south";
 			}
-			else if(rotation == 270 || rotation == -90)
+			else if(rotation == 3 || rotation == -1)
 			{
 				facing = "west";
 			}
@@ -69,19 +104,19 @@ public class Ant {
 		{
 			calcFacing();
 			
-			if(facing == "north")
+			if(facing.equals("north"))
 			{
 				pos.y += tex.getHeight();
 			}
-			else if(facing == "south")
+			else if(facing.equals("south"))
 			{
 				pos.y -= tex.getHeight();
 			}
-			else if(facing == "east")
+			else if(facing.equals("east"))
 			{
 				pos.x += tex.getWidth();
 			}
-			else if(facing == "west")
+			else if(facing.equals("west"))
 			{
 				pos.x -= tex.getWidth();
 			}
