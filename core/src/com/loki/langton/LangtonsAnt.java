@@ -2,7 +2,6 @@ package com.loki.langton;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -14,6 +13,10 @@ public class LangtonsAnt extends ApplicationAdapter {
 	Grid grid;
 	Ant ant;
 	
+	long processTime = System.nanoTime();
+	
+	double nanosecondsBetweenUpdates = 2000000;
+	
 	@Override
 	public void create () {
 		sb = new SpriteBatch();
@@ -23,17 +26,16 @@ public class LangtonsAnt extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
-		
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		//SpriteBatch
-		sb.begin();
-			grid.render(sb);
-			ant.render(sb);
-		sb.end();
-		
-		ant.update(grid.getSquares());
+	public void render () {	
+			//SpriteBatch
+			sb.begin();
+				grid.render(sb);
+				ant.render(sb);
+			sb.end();
+		if(((System.nanoTime() - processTime)) > nanosecondsBetweenUpdates)
+		{
+			ant.update(grid.getSquares());
+			processTime = System.nanoTime();
+		}
 	}
 }

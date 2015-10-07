@@ -15,8 +15,8 @@ public class Ant {
 		Rectangle bounds;
 		String facing;
 		
-		long referenceTime = System.currentTimeMillis();
-		double millisecondsBetweenUpdates = 500;
+//		long referenceTime = System.currentTimeMillis();
+//		double millisecondsBetweenUpdates = 500;
 		int rotation;
 	
 		public Ant(Texture tex, Vector2 pos, int rotation)
@@ -38,29 +38,26 @@ public class Ant {
 		public void render(SpriteBatch sb)
 		{
 			sb.draw(tex, pos.x, pos.y);
+			calcFacing();
 		}
 		
 		public void update(Array<Square> squares)
 		{
-			if(((System.currentTimeMillis() - referenceTime)) > millisecondsBetweenUpdates)
-			{	
-				for(Square s : squares)
+			for(Square s : squares)
+			{
+				if(getBounds().overlaps(s.getBounds()))
 				{
-					if(getBounds().overlaps(s.getBounds()))
+					if(s.getColor().equals("white"))
 					{
-						if(s.getColor().equals("white"))
-						{
-							s.changeColor();
-							move("right");
-						}
-						else if(s.getColor().equals("black"))
-						{
-							s.changeColor();
-							move("left");
-						}
+						s.changeColor();
+						move("right");
+					}
+					else if(s.getColor().equals("black"))
+					{
+						s.changeColor();
+						move("left");
 					}
 				}
-				referenceTime = System.currentTimeMillis();
 			}
 		}
 		
@@ -82,7 +79,15 @@ public class Ant {
 		
 		public void calcFacing()
 		{
-			if(rotation == 0 || rotation == 4 || rotation == -4)
+			if(rotation > 4)
+			{
+				rotation = 1;
+			}
+			else if(rotation < -4)
+			{
+				rotation = -1;
+			}
+			else if(rotation == 0 || rotation == 4 || rotation == -4)
 			{
 				facing = "north";
 			}
