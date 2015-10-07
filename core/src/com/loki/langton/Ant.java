@@ -59,7 +59,7 @@ public class Ant {
 			{
 				facing = "south";
 			}
-			else if(rotation == 270 || rotation == 90)
+			else if(rotation == 270 || rotation == -90)
 			{
 				facing = "west";
 			}

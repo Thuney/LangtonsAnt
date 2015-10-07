@@ -67,12 +67,12 @@ public class Grid {
 					if(s.getColor() == "white")
 					{
 						s.changeColor();
-						ant.move("left");
+						ant.move("right");
 					}
 					else if(s.getColor() == "black")
 					{
 						s.changeColor();
-						ant.move("right");
+						ant.move("left");
 					}
 				}
 				System.out.println("Facing: " + ant.facing + " Rotation: " + ant.rotation + " Color: " + s.getColor());
