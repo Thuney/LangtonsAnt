@@ -14,8 +14,6 @@ public class Ant {
 		Rectangle bounds;
 		String facing;
 		
-//		long referenceTime = System.currentTimeMillis();
-//		double millisecondsBetweenUpdates = 500;
 		int rotation;
 	
 		public Ant(Texture tex, Vector2 pos, int rotation)
@@ -35,6 +33,7 @@ public class Ant {
 		
 		public void render(SpriteBatch sb)
 		{
+//			sb.draw(tex, pos.x, pos.y, (pos.x + tex.getWidth()), (pos.y + tex.getHeight()), tex.getWidth(), tex.getHeight(), 0, 0, 90*rotation, 0, 0, 0, 0, false, false);
 			sb.draw(tex, pos.x, pos.y);
 			calcFacing();
 		}
@@ -63,13 +62,27 @@ public class Ant {
 		{
 			if(direction.equals("left"))
 			{
-				rotation -= 1;
-				
+				if(rotation == -3)
+				{
+					rotation = 0;
+				}
+				else
+				{
+					rotation -= 1;
+				}
+					
 				calcMovement();
 			}
 			else if(direction.equals("right"))
 			{
-				rotation += 1;
+				if(rotation == 3)
+				{
+					rotation = 0;
+				}
+				else
+				{
+					rotation += 1;
+				}
 				
 				calcMovement();
 			}
@@ -77,15 +90,7 @@ public class Ant {
 		
 		public void calcFacing()
 		{
-			if(rotation > 4)
-			{
-				rotation = 0;
-			}
-			else if(rotation < -4)
-			{
-				rotation = 0;
-			}
-			else if(rotation == 0 || rotation == 4 || rotation == -4)
+			if(rotation == 0)
 			{
 				facing = "north";
 			}

@@ -13,29 +13,35 @@ public class LangtonsAnt extends ApplicationAdapter {
 	Grid grid;
 	Ant ant;
 	
-	long processTime = System.nanoTime();
+	long startTime = System.currentTimeMillis();
+	float elapsedTime;
+	float lastUpdate;
+	float timeBetweenUpdates = 1000f;
 	
-	double nanosecondsBetweenUpdates = 20000000;
+	int step = 0;
 	
 	@Override
 	public void create () {
 		sb = new SpriteBatch();
 		texMan = new TextureManager();
-		grid = new Grid(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), texMan.blackSquare_16, texMan.whiteSquare_16);
-		ant = new Ant(texMan.ant_16, new Vector2((Gdx.graphics.getWidth()/2) - texMan.ant_16.getWidth(),(Gdx.graphics.getHeight()/2) - texMan.ant_16.getHeight()), 0);
+		grid = new Grid(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), texMan.blackSquare_8, texMan.whiteSquare_8);
+		ant = new Ant(texMan.ant_8, new Vector2((Gdx.graphics.getWidth()/2) - texMan.ant_8.getWidth(),(Gdx.graphics.getHeight()/2) - texMan.ant_8.getHeight()), 3);
 	}
 
 	@Override
 	public void render () {	
 			//SpriteBatch
-			sb.begin();
-				grid.render(sb);
-				ant.render(sb);
-			sb.end();
-		if(((System.nanoTime() - processTime)) > nanosecondsBetweenUpdates)
+		elapsedTime = (System.currentTimeMillis() - startTime);
+		sb.begin();
+			grid.render(sb);
+			ant.render(sb);
+		sb.end();
+		if(elapsedTime > timeBetweenUpdates)
 		{
 			ant.update(grid.getSquares());
-			processTime = System.nanoTime();
+			step++;
+			System.out.println(step);
+			timeBetweenUpdates += elapsedTime;
 		}
 	}
 }
