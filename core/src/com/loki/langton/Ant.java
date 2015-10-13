@@ -40,9 +40,10 @@ public class Ant {
 		
 		public void update(Array<Square> squares)
 		{
+			Rectangle bounds = getBounds();
 			for(Square s : squares)
 			{
-				if(getBounds().overlaps(s.getBounds()))
+				if(bounds.overlaps(s.getBounds()))
 				{
 					if(s.getColor().equals("white"))
 					{

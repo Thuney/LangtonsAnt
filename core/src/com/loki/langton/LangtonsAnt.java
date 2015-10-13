@@ -13,12 +13,13 @@ public class LangtonsAnt extends ApplicationAdapter {
 	Grid grid;
 	Ant ant;
 	
-	long startTime = System.currentTimeMillis();
-	float elapsedTime;
-	float lastUpdate;
-	float timeBetweenUpdates = 1000f;
+	long lastRenderTime = System.currentTimeMillis();
+	float elapsedTime = 0;
+	float timeBetweenUpdates = 0f;
 	
 	int step = 0;
+	
+	boolean space = false;
 	
 	@Override
 	public void create () {
@@ -30,18 +31,20 @@ public class LangtonsAnt extends ApplicationAdapter {
 
 	@Override
 	public void render () {	
-			//SpriteBatch
-		elapsedTime = (System.currentTimeMillis() - startTime);
+		
+		elapsedTime = (System.currentTimeMillis() - lastRenderTime);
+		//SpriteBatch
 		sb.begin();
 			grid.render(sb);
 			ant.render(sb);
 		sb.end();
+		
 		if(elapsedTime > timeBetweenUpdates)
 		{
 			ant.update(grid.getSquares());
 			step++;
 			System.out.println(step);
-			timeBetweenUpdates += elapsedTime;
+			lastRenderTime = System.currentTimeMillis();
 		}
 	}
 }

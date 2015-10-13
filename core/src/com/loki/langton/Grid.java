@@ -21,11 +21,11 @@ public class Grid {
 		this.whiteTex = tex2;
 		this.squares = new Array<Square>();
 		
-		for(int i=0; i < height/blackTex.getHeight(); i++)
+		for(int i=0; i < height/whiteTex.getHeight(); i++)
 		{
-			for(int e=0; e < width/blackTex.getWidth(); e++)
+			for(int e=0; e < width/whiteTex.getWidth(); e++)
 			{
-				squares.add(new Square(new Vector2(e*blackTex.getHeight(), i*blackTex.getHeight()), blackTex.getHeight(), "white"));
+				squares.add(new Square(new Vector2(e*whiteTex.getHeight(), i*whiteTex.getHeight()), whiteTex.getHeight(), "white"));
 			}
 		}
 	}
