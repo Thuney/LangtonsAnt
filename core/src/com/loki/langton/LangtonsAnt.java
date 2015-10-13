@@ -15,11 +15,9 @@ public class LangtonsAnt extends ApplicationAdapter {
 	
 	long lastRenderTime = System.currentTimeMillis();
 	float elapsedTime = 0;
-	float timeBetweenUpdates = 0f;
+	float timeBetweenUpdates = 1000f;
 	
 	int step = 0;
-	
-	boolean space = false;
 	
 	@Override
 	public void create () {
