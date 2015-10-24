@@ -13,3 +13,6 @@ initial arrangement of tiles.
 
 I'm not terribly familiar with LibGDX currently, nor am I accomplished in being entirely efficient in my code 100%
 of the time, so forgive me for shortcomings in my code.
+
+P.S. I've tried cloning this repository into other IDEs configured the same as the one I use, but the program behaves
+extremely strange and does not function. Sorry.
