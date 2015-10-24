@@ -15,4 +15,4 @@ I'm not terribly familiar with LibGDX currently, nor am I accomplished in being 
 of the time, so forgive me for shortcomings in my code.
 
 P.S. I've tried cloning this repository into other IDEs configured the same as the one I use, but the program behaves
-extremely strange and does not function. Sorry.
+extremely strangely and does not function. Sorry.
