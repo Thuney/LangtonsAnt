@@ -8,9 +8,10 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new LangtonsAnt(), config);
-		
-		config.width = 1024;
-		config.height = 1024;
+
+		config.resizable = true;
+		config.width = 768;
+		config.height = 768;
 		config.title = "Langton's Ant";
 	}
 }

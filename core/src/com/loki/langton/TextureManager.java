@@ -13,5 +13,12 @@ public class TextureManager {
 	Texture whiteSquare_32 = new Texture(Gdx.files.internal("whitesquare.png"));
 	Texture ant_16 = new Texture(Gdx.files.internal("ant.png"));
 	Texture ant_8 = new Texture(Gdx.files.internal("ant2.png"));
+
+	public Texture menubackground = new Texture(Gdx.files.internal("mainmenu_backsplash.png"));
+	public Texture menubutton = new Texture(Gdx.files.internal("menubuttonblank.png"));
+	public Texture runAntButton = new Texture(Gdx.files.internal("activeantbutton.png"));
+	public Texture editGridButton = new Texture(Gdx.files.internal("editgridbutton.png"));
+	public Texture editAntButton = new Texture(Gdx.files.internal("editantbutton.png"));
+	public Texture aboutButton = new Texture(Gdx.files.internal("aboutprogrambutton.png"));
 	
 }

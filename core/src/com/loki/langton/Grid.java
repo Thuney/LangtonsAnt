@@ -7,18 +7,18 @@ import com.badlogic.gdx.utils.Array;
 
 public class Grid {
 
-	int width;
-	int height;
-	Texture blackTex;
-	Texture whiteTex;
-	Array<Square> squares;
+	private int width;
+	private int height;
+	private Texture blackTex;
+	private Texture whiteTex;
+	private Array<Square> squares;
 	
-	public Grid(int window_width, int window_height, Texture tex1, Texture tex2)
+	Grid(int window_width, int window_height, Texture blackSquare, Texture whiteSquare)
 	{
 		this.width = window_width;
 		this.height = window_height;
-		this.blackTex = tex1;
-		this.whiteTex = tex2;
+		this.blackTex = blackSquare;
+		this.whiteTex = whiteSquare;
 		this.squares = new Array<Square>();
 		
 		for(int i=0; i < height/whiteTex.getHeight(); i++)
@@ -41,11 +41,11 @@ public class Grid {
 		{
 			if(s.getColor().equals("black"))
 			{
-				sb.draw(blackTex, s.pos.x, s.pos.y);
+				sb.draw(blackTex, s.getPos().x, s.getPos().y);
 			}
 			else
 			{
-				sb.draw(whiteTex, s.pos.x, s.pos.y);
+				sb.draw(whiteTex, s.getPos().x, s.getPos().y);
 			}
 		}
 	}
@@ -53,5 +53,19 @@ public class Grid {
 	public void update()
 	{
 		
+	}
+
+	public int getSquareHeight() { return whiteTex.getHeight(); }
+
+	public int getSquareWidth() { return whiteTex.getWidth(); }
+
+	public int getHeight()
+	{
+		return height;
+	}
+
+	public int getWidth()
+	{
+		return width;
 	}
 }

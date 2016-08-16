@@ -5,13 +5,12 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Square {
 
-	//Boolean color: True = black, False = white
-	Vector2 pos;
-	int length;
-	String color;
-	Rectangle bounds;
+	private Vector2 pos;
+	private int length;
+	private String color;
+	private Rectangle bounds;
 	
-	public Square(Vector2 pos, int length, String color)
+	Square(Vector2 pos, int length, String color)
 	{
 		this.pos = pos;
 		this.length = length;
@@ -21,17 +20,17 @@ public class Square {
 	
 	public void changeColor()
 	{
-		if(color == "black")
+		if(color.equals("black"))
 		{
 			color = "white";
 		}
-		else if(color == "white")
+		else if(color.equals("white"))
 		{
 			color = "black";
 		}
 	}
 	
-	public String getColor()
+	String getColor()
 	{
 		return color;
 	}
@@ -40,4 +39,6 @@ public class Square {
 	{
 		return bounds;
 	}
+
+	public Vector2 getPos() { return pos; }
 }
