@@ -20,16 +20,19 @@ public class Grid {
 		this.blackTex = blackSquare;
 		this.whiteTex = whiteSquare;
 		this.squares = new Array<Square>();
-		
+
+		//Create our grid out of square objects, spaced our texture width apart for the height and width of the screen
 		for(int i=0; i < height/whiteTex.getHeight(); i++)
 		{
 			for(int e=0; e < width/whiteTex.getWidth(); e++)
 			{
+				//squares object Array keeps our grid ordered
 				squares.add(new Square(new Vector2(e*whiteTex.getHeight(), i*whiteTex.getHeight()), whiteTex.getHeight(), "white"));
 			}
 		}
 	}
-	
+
+	//Return our object array of squares
 	public Array<Square> getSquares()
 	{
 		return squares;
@@ -37,14 +40,19 @@ public class Grid {
 	
 	public void render(SpriteBatch sb)
 	{
+		//For every square in the grid
 		for(Square s: squares)
 		{
+			//If the square is black
 			if(s.getColor().equals("black"))
 			{
+				//Draw the black texture at the position vector
 				sb.draw(blackTex, s.getPos().x, s.getPos().y);
 			}
+			//If the square is white
 			else
 			{
+				//Draw the white texture at the positon vector
 				sb.draw(whiteTex, s.getPos().x, s.getPos().y);
 			}
 		}
@@ -54,6 +62,8 @@ public class Grid {
 	{
 		
 	}
+
+	//Self explanatory methods
 
 	public int getSquareHeight() { return whiteTex.getHeight(); }
 

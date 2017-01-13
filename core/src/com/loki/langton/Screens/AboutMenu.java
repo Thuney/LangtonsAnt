@@ -41,6 +41,7 @@ public class AboutMenu extends Screen {
 
     @Override
     public void render(SpriteBatch sb) {
+        //Renders our bitmapfont on a red background, that's literally it.
         sb.begin();
             Gdx.gl.glClearColor(0.6f, 0, 0, 1);
             Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );

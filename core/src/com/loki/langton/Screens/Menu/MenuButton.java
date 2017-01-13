@@ -8,6 +8,10 @@ import com.badlogic.gdx.math.Rectangle;
 /**
  * Created by Loki on 8/2/2016.
  */
+
+//Class represents the prototype for a button on the main menu
+//I mostly set the menu buttons up this way so that I could add more and scale them
+//more easily
 abstract class MenuButton {
 
     private int x;
@@ -42,13 +46,6 @@ abstract class MenuButton {
 
     boolean hoveringOver()
     {
-        if(getBounds().contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY()))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return getBounds().contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY());
     }
 }

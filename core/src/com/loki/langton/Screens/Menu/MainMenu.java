@@ -40,7 +40,7 @@ public class MainMenu extends Screen {
 
         Gdx.graphics.setDisplayMode(menuWidth_px, menuHeight_px, false);
 
-        spaceBetweenButtons = (275/numButtons);
+        spaceBetweenButtons = (275/numButtons); //Ew hardcoded value, I'm so sorry but also I won't fix it
         x_margin = (menuWidth_px - tm.menubutton.getWidth()) / 2;
 
         buttons = new Array<MenuButton>();

@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class TextureManager {
-	
+
+	//Some textures are unused, and are just bigger or smaller versions of other textures
+
 	Texture whiteSquare_8 = new Texture(Gdx.files.internal("whitesquare3.png"));
 	Texture blackSquare_8 = new Texture(Gdx.files.internal("blacksquare3.png"));
 	Texture blackSquare_16 = new Texture(Gdx.files.internal("blacksquare2.png"));

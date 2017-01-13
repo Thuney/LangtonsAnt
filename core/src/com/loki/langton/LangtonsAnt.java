@@ -21,8 +21,10 @@ public class LangtonsAnt extends ApplicationAdapter {
 	@Override
 	public void create () {
 		sb = new SpriteBatch();
+		//Orthographic camera is used so that we can scale our window without messing up the size of our elements
 		camera = new OrthographicCamera();
 
+		//Object that stores strictly our texture files
 		texMan = new TextureManager();
 
 		grid = new Grid(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), texMan.blackSquare_8, texMan.whiteSquare_8);

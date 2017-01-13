@@ -34,6 +34,9 @@ public class ActiveAnt extends Screen {
     @Override
     public void update() {
 
+        //This update loop just updates the position according the what time delay is selected
+        //Pressing the right or left arrow keys increases or lowers the time delay
+
         float elapsedTime = (System.currentTimeMillis() - lastRenderTime);
 
         if(elapsedTime > times[timesArrayPos])

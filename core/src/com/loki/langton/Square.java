@@ -6,20 +6,22 @@ import com.badlogic.gdx.math.Vector2;
 public class Square {
 
 	private Vector2 pos;
-	private int length;
 	private String color;
 	private Rectangle bounds;
-	
+
+	//Each square has a position vector, a length, and a color
 	Square(Vector2 pos, int length, String color)
 	{
 		this.pos = pos;
-		this.length = length;
 		this.color = color;
 		bounds = new Rectangle(pos.x, pos.y, length, length);
 	}
-	
+
+
 	public void changeColor()
 	{
+
+		//TODO: Change these stupid comparisons and make them use ints instead of strings. So inefficient.
 		if(color.equals("black"))
 		{
 			color = "white";
