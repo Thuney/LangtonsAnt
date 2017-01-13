@@ -18,3 +18,5 @@ When it comes to importing this project into your IDE, roughly follow these step
   2. Either download the project or clone the repository through Github.
   3. Import into your IDE through the build.gradle file.
   You may potentially have to create a `local.properties` folder defining the position of your Android SDK through the declaration of an `sdk.dir` variable. Other problems with building should be pointed out by your IDE, and you should be able to figure them out.
+
+Alternatively, there is a jar in the releases of this repository if you want to just run the program.
