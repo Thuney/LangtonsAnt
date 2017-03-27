@@ -19,4 +19,4 @@ When it comes to importing this project into your IDE, roughly follow these step
   3. Import into your IDE through the build.gradle file.
   You may potentially have to create a `local.properties` folder defining the position of your Android SDK through the declaration of an `sdk.dir` variable. Other problems with building should be pointed out by your IDE, and you should be able to figure them out.
 
-Alternatively, there is a jar in the releases of this repository if you want to just run the program.
+Alternatively, there is a JAR in the releases of this repository if you want to just run the program. *JAR is out of date, so it runs significantly slower than the frame unlocked version -- will update at some point"
