@@ -13,5 +13,8 @@ public class DesktopLauncher {
 		config.width = 768;
 		config.height = 768;
 		config.title = "Langton's Ant";
+		config.vSyncEnabled = false; // Setting to false disables vertical sync
+		config.foregroundFPS = 0; // Setting to 0 disables foreground fps throttling
+		config.backgroundFPS = 0;
 	}
 }

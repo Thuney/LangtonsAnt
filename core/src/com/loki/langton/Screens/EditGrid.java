@@ -26,17 +26,17 @@ public class EditGrid extends Screen {
 
     @Override
     public void update() {
-        for(Square s: grid.getSquares())
+        for(Square[] square: grid.getSquares())
         {
-            if(Gdx.input.isButtonPressed(Input.Buttons.LEFT) && s.getBounds().contains(Gdx.input.getX(), grid.getHeight() - Gdx.input.getY()) && !switched)
-            {
-                s.changeColor();
-                switched = true;
-            }
+            for(Square s: square) {
+                if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && s.getBounds().contains(Gdx.input.getX(), grid.getHeight() - Gdx.input.getY()) && !switched) {
+                    s.changeColor();
+                    switched = true;
+                }
 
-            if(!Gdx.input.isButtonPressed(Input.Buttons.LEFT))
-            {
-                switched = false;
+                if (!Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+                    switched = false;
+                }
             }
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))

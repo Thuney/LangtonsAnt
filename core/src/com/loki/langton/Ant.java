@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 
 public class Ant {
 
@@ -37,38 +36,39 @@ public class Ant {
 			sb.draw(tex, pos.x, pos.y);
 		}
 		
-		public void update(Array<Square> squares)
+		public void update(Square[][] grid)
 		{
 			//Get the rectangle representing the ant's grid position
 			Rectangle bounds = getBounds();
 			//Iterate through the squares array
-			for(Square s : squares)
-			{
-				//If we found the square that the ant is on
-				if(bounds.overlaps(s.getBounds()))
-				{
-					//Check color:
-					//If the color is white
-					if(s.getColor().equals("white"))
-					{
-						//Move right
-						move("right");
+//			for(Square[] square : grid)
+//			{
+//				for(Square s: square)
+//				{
+					//If we found the square that the ant is on
+					Square s = grid[(int)pos.y/tex.getHeight()][(int)pos.x/tex.getWidth()];
+					if (bounds.overlaps(s.getBounds())) {
+						//Check color:
+						//If the color is white
+						if (s.getColor().equals("white")) {
+							//Move right
+							move(false);
+						}
+						//If the color is black
+						else if (s.getColor().equals("black")) {
+							//Move left
+							move(true);
+						}
+						s.changeColor();
 					}
-					//If the color is black
-					else if(s.getColor().equals("black"))
-					{
-						//Move left
-						move("left");
-					}
-					s.changeColor();
-				}
-			}
+//				}
+//			}
 		}
 		
-		private void move(String direction)
+		private void move(boolean left)
 		{
 			//Update rotation based on movement direction
-			rotation = (direction.equals("left")) ? rotation - 1 : (direction.equals("right")) ? rotation + 1 : rotation;
+			rotation = (left) ? rotation - 1 : rotation + 1;
 			calcMovement();
 		}
 		
@@ -76,25 +76,24 @@ public class Ant {
 		{
 			//Modulus arithmetic to determine the direction we are facing, assuming that 0 is our 'north' direction
 			//'Facing' string is mostly for debug, and doesn't control anything
-			//TODO: Change these stupid comparisons and make them use ints instead of strings. What the heck was I thinking?
 			if(rotation % 4 == 0)
 			{
-				facing = "north";
+//				facing = "north";
 				pos.y += tex.getHeight();
 			}
 			else if(rotation % 4 == 1)
 			{
-				facing = "east";
+//				facing = "east";
 				pos.x += tex.getWidth();
 			}
 			else if(rotation % 4 == 2)
 			{
-				facing = "south";
+//				facing = "south";
 				pos.y -= tex.getHeight();
 			}
 			else if(rotation % 4 == 3)
 			{
-				facing = "west";
+//				facing = "west";
 				pos.x -= tex.getWidth();
 			}
 

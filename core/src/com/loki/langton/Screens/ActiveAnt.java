@@ -47,25 +47,12 @@ public class ActiveAnt extends Screen {
 			lastRenderTime = System.currentTimeMillis();
 		}
 
-		if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))
-        {
-            if(timesArrayPos < 4)
-            {
-                timesArrayPos++;
-            }
-        }
-        else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT))
-        {
-            if(timesArrayPos > 0)
-            {
-                timesArrayPos--;
-            }
-        }
+		if(timesArrayPos < 4 && Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))
+            timesArrayPos++;
+        else if(timesArrayPos > 0 && Gdx.input.isKeyJustPressed(Input.Keys.LEFT))
+            timesArrayPos--;
 
-		if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))
-        {
-            ScreenManager.setScreen(ScreenManager.getLastScreen());
-        }
+		if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) ScreenManager.setScreen(ScreenManager.getLastScreen());
 
     }
 
