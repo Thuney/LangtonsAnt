@@ -38,31 +38,20 @@ public class Ant {
 		
 		public void update(Square[][] grid)
 		{
-			//Get the rectangle representing the ant's grid position
-			Rectangle bounds = getBounds();
-			//Iterate through the squares array
-//			for(Square[] square : grid)
-//			{
-//				for(Square s: square)
-//				{
-					//If we found the square that the ant is on
-					Square s = grid[(int)pos.y/tex.getHeight()][(int)pos.x/tex.getWidth()];
-					if (bounds.overlaps(s.getBounds())) {
-						//Check color:
-						//If the color is white
-						if (s.getColor().equals("white")) {
-							//Move right
-							move(false);
-						}
-						//If the color is black
-						else if (s.getColor().equals("black")) {
-							//Move left
-							move(true);
-						}
-						s.changeColor();
-					}
-//				}
-//			}
+			//Square that the ant is on
+			Square s = grid[(int)pos.y/tex.getHeight()][(int)pos.x/tex.getWidth()];
+			//Check color:
+			//If the color is white
+			if (s.getColor().equals("white")) {
+				//Move right
+				move(false);
+			}
+			//If the color is black
+			else if (s.getColor().equals("black")) {
+				//Move left
+				move(true);
+			}
+			s.changeColor();
 		}
 		
 		private void move(boolean left)
